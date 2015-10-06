@@ -1,8 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-
 
 class AbstractService(models.Model):
 	service_name = models.CharField(verbose_name='Service Name', max_length=50, blank=True, null=True)
