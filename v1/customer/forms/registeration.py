@@ -15,6 +15,7 @@ class RegisterationForm(forms.ModelForm):
 	email=forms.EmailField(widget= forms.widget.TextInput, label='Email Id')
 	password1=forms.CharField(widget=forms.widget.PasswordInput, label='Password')
 	password2=forms.CharField(widget=forms.widget.PasswordInput, label='Confirm Password')
+	
 
 	class Meta:
         model = Customer
@@ -42,9 +43,4 @@ class RegisterationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
-
-
-
-       
 		
