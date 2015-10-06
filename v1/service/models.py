@@ -15,6 +15,12 @@ class AbstractCategory(models.Model):
 	class Meta:
 		abstract = True
 
+class Category(AbstractCategory):
+	pass
+
+	class Meta:
+		verbose_name = 'Category'
+		verbose_name_plural = 'Categories'
 
 class Service(AbstractService):
 	category = models.ForeignKey(Category, verbose_name='Category Name', blank=True, null=True)
@@ -24,9 +30,4 @@ class Service(AbstractService):
 		verbose_name_plural = 'Services'
 
 
-class Category(AbstractCategory):
-	pass
 
-	class Meta:
-		verbose_name = 'Category'
-		verbose_name_plural = 'Categories'

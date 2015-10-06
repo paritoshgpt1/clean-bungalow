@@ -27,6 +27,13 @@ class AbstractAddress(models.Model):
 		abstract = True
 
 
+class Address(AbstractAddress):
+	customer = models.ForeignKey('Customer', verbose_name='Customer', blank=True, null=True)
+
+	class Meta:
+		verbose_name = 'Address'
+		verbose_name_plural = 'Addresses'
+
 class Customer(AbstractCustomer):
 	shipping_address = models.ForeignKey(Address, verbose_name='Shipping Address', blank=True, null=True)
 	billing_address = models.ForeignKey(Address, verbose_name='Billing Address', blank=True, null=True)
@@ -36,9 +43,3 @@ class Customer(AbstractCustomer):
 		verbose_name_plural = 'Customers'
 
 
-class Address(AbstractAddress):
-	customer = models.ForeignKey(Customer, verbose_name='Customer', blank=True, null=True)
-
-	class Meta:
-		verbose_name = 'Address'
-		verbose_name_plural = 'Addresses'
