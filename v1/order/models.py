@@ -19,6 +19,7 @@ class OrderService(AbstractService):
 		verbose_name = 'Order Service'
 		verbose_name_plural = 'Order Services'
 
+
 class OrderAddress(AbstractAddress):
 	pass
 
@@ -26,9 +27,12 @@ class OrderAddress(AbstractAddress):
 		verbose_name = 'Order Address'
 		verbose_name_plural = 'Order Addresses'
 
+
 class OrderCustomer(AbstractCustomer):
-	shipping_address = models.ForeignKey(OrderAddress, verbose_name='Shipping Address', blank=True, null=True)
-	billing_address = models.ForeignKey(OrderAddress, verbose_name='Billing Address', blank=True, null=True)
+	shipping_address = models.ForeignKey(OrderAddress, verbose_name='Shipping Address',
+										related_name='shipping_customer', blank=True, null=True)
+	billing_address = models.ForeignKey(OrderAddress, verbose_name='Billing Address', related_name='billing_customer',
+										blank=True, null=True)
 
 	class Meta:
 		verbose_name = 'Order Customer'
@@ -36,12 +40,13 @@ class OrderCustomer(AbstractCustomer):
 
 
 class OrderWorker(AbstractWorker):
-	service = models.ManyToManyField(OrderService, verbose_name='Services', blank=True, null=True)
+	service = models.ManyToManyField(OrderService, verbose_name='Services', blank=True)
 	# category = models.ForeignKey(OrderCategory, verbose_name='Category', blank=True, null=True)
 
 	class Meta:
 		verbose_name = 'Order Worker'
 		verbose_name_plural = 'Order Workers'
+
 
 class Order(models.Model):
 	code = models.CharField(verbose_name='Order Code', max_length=50, blank=True, null=True)
