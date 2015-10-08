@@ -1,2 +1,2 @@
-from registeration import RegistrationForm
-from login import LoginForm
+# from registeration import RegistrationForm
+# from login import LoginForm

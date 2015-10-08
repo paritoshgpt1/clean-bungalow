@@ -19,6 +19,7 @@ lib64/
 parts/
 sdist/
 var/
+.idea/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -59,3 +60,6 @@ target/
 
 # Virtual Env
 myenv/
+
+# Static Root
+static_root/

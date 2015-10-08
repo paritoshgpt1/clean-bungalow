@@ -1,12 +1,12 @@
-from django import forms
+# from django import forms
 
 
-class LoginForm(forms.Form):
+# class LoginForm(forms.Form):
     
-    #Login form
+#     #Login form
     
-    username=forms.EmailField(widget=forms.widgets.TextInput)
-    password=forms.CharField(widget=forms.widgets.PasswordInput)
+#     username=forms.EmailField(widget=forms.widgets.TextInput)
+#     password=forms.CharField(widget=forms.widgets.PasswordInput)
 
-    class Meta:
-        fields = ['email', 'password']
+#     class Meta:
+#         fields = ['email', 'password']
