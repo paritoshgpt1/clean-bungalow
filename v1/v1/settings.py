@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c79v14_wbp!$*zw)qm6$lf*2_dc@dvgz9&-g4dw*-$hhlgo%=^'
 
+AUTH_USER_MODEL = 'customer.Customer'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

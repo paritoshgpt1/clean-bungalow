@@ -1,4 +1,5 @@
 {% extends 'customer/base.html' %}
+{% load static %}
 {% block maincontent %}
     <!-- Wrapper -->
     <div class="wrapper">
@@ -27,36 +28,51 @@
               <div class="sign-inner">
                 <h3 class="first-child">Create New Account</h3>
                 <hr>
-                <form role="form">
-                  <div class="form-group">
-                    <label for="name" class="sr-only">Enter name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Your name" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your full name here." data-original-title="Name">
+                <form role="form" action='/register/' method="POST">
+                {% csrf_token %}
+                    <div class="form-group">
+                    <label for="name" class="sr-only">Enter Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your full name here." data-original-title="Name">
                   </div>
+                  {% if mobile_error %}
+                  <div class="form-group has-error">
+                  {% else %}
                   <div class="form-group">
-                    <label for="username" class="sr-only">Enter username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Username" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your nickname here." data-original-title="Username">
+                  {% endif %}
+                    <label for="mobile" class="sr-only">Enter Mobile No.</label>
+                    <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Mobile No." data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your mobile no. here." data-original-title="Mobile No.">
+                  {% if mobile_error %}
+                      <div class="alert alert-danger">{{ mobile_error }}</div>
+                    {%endif %}
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="email" class="sr-only">Enter e-mail</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter email" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter a valid email here." data-original-title="Email">
-                  </div>
+                  </div> -->
+                  {% if password_error %}
+                  <div class="form-group has-error">
+                  {% else %}
                   <div class="form-group">
+                  {% endif %}
                     <div class="row">
                       <div class="col-sm-6">
                         <label for="password" class="sr-only">Enter password</label>
-                        <input type="password" class="form-control margin-bottom-xs" id="password" placeholder="Password" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter a good password here." data-original-title="Password">
+                        <input type="password" name="password1" class="form-control margin-bottom-xs" id="password" placeholder="Password" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter a good password here." data-original-title="Password">
                       </div>
                       <div class="col-sm-6">
                         <label for="repeat-password" class="sr-only">Repeat password</label>
-                        <input type="password" class="form-control" id="repeat-password" placeholder="Repeat Password" data-toggle="popover" data-trigger="focus" data-content="Confirm your password here." data-original-title="Repeat Password">
+                        <input type="password" name="password2" class="form-control" id="repeat-password" placeholder="Repeat Password" data-toggle="popover" data-trigger="focus" data-content="Confirm your password here." data-original-title="Repeat Password">
                       </div>
                     </div>
+                    {% if password_error %}
+                      <div class="alert alert-danger">{{ password_error }}</div>
+                    {%endif %}
                   </div>
-                  <div class="checkbox">
+                  <!--<div class="checkbox">
                     <label>
                       <input type="checkbox"> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                     </label>
-                  </div>
+                  </div>-->
                   <button type="submit" class="btn btn-theme-primary">Create Account</button>
                 </form>
               </div>
@@ -66,4 +82,25 @@
       </div> <!-- / .container -->
 
     </div> <!-- / .wrapper -->
+    
+{% endblock %}
+
+{%block footer %}
+  <script type="text/javascript">
+      $(function(){
+        $('#name').popover();
+      });
+
+      $(function(){
+        $('#mobile').popover();
+      });
+
+      $(function(){
+        $('#password').popover();
+      });
+
+      $(function(){
+        $('#repeat-password').popover();
+      });
+    </script>
 {% endblock %}
