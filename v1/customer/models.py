@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, AnonymousUser, Group
+from django.utils import timezone
 
 class CustomerManager(BaseUserManager):
 
@@ -19,7 +20,7 @@ class CustomerManager(BaseUserManager):
 
 	def create_superuser(self, username, password, **extra_fields):
 		user = self._create_user(username, password, True, True, **extra_fields)
-		group = Group.objects.get(name='Administrator')
+		group, created = Group.objects.get_or_create(name='Administrator')
 		user.groups.add(group)
 		user.save()
 		return user
@@ -30,7 +31,7 @@ class CustomerManager(BaseUserManager):
 class AbstractCustomer(AbstractBaseUser):
 	first_name = models.CharField(verbose_name='First Name', max_length=30, blank=True, null=True)
 	last_name = models.CharField(verbose_name='Last Name', max_length=30, blank=True, null=True)
-	email = models.EmailField(verbose_name="Email", max_length=50, unique=True, null=True)
+	email = models.EmailField(verbose_name="Email", max_length=50, unique=True, null=True, blank=True)
 	mobile = models.CharField(verbose_name='Mobile No', blank=True, null=True, max_length=10)
 	
 	is_active = models.BooleanField(verbose_name='Is Active', default=True)

@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^login/$', views.loginUser, name='check_login'),
     # url(r'^logout/$', views.logout, name='logout'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^order/', include('order.urls', namespace='order')),
     url(r'^$', views.home, name='home'),
 ]

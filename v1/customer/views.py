@@ -7,6 +7,8 @@ from .forms import CustomerForm
 from .models import Customer
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
+from django.core.urlresolvers import reverse
+
 
 # from customer.forms import LoginForm, RegisterationForm
 # Create your views here.
@@ -49,7 +51,7 @@ def loginUser(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				return HttpResponse('Login Successful')
+				return redirect(reverse('order:book_service'))
 	else:
 		context = RequestContext(request)
 		return render_to_response('customer/sign-in.html', {}, context_instance=context)
