@@ -5,6 +5,9 @@ from django.db import models
 class AbstractService(models.Model):
 	service_name = models.CharField(verbose_name='Service Name', max_length=50, blank=True, null=True)
 
+	def __str__(self):
+		return '%s' % self.service_name
+
 	class Meta:
 		abstract = True
 
@@ -24,6 +27,8 @@ class Category(AbstractCategory):
 
 class Service(AbstractService):
 	category = models.ForeignKey(Category, verbose_name='Category Name', blank=True, null=True)
+
+
 
 	class Meta:
 		verbose_name = 'Service'

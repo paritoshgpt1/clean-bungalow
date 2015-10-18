@@ -1,5 +1,8 @@
 {% extends 'customer/base.html' %}
 {% load static from staticfiles %}
+{% block customcss %}
+  <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+{% endblock  %}
 {% block maincontent %}
     <!-- Wrapper -->
     <div class="wrapper">
@@ -8,96 +11,87 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <h2 class="headline-lg">Paperclip: Multi-purpose Professional Theme</h2>
-            <h4 class="text-theme-secondary">Perfect for corporate websites and mobile apps.</h4>
-            <div class="browser-showcase">
-              <img src="{% static 'img/browsers.png' %}" class="img-responsive" alt="...">
+            <form action="/order/book-service" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="dtp_input3" class="col-md-2 control-label">Select Service</label>
+                  <div class="input-group col-md-5">
+                    <select class="form-control" name="service">
+                      {% for each in services %}
+                        <option value="{{ each.0 }}">{{each.1}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="dtp_input2" class="col-md-2 control-label">Select Date</label>
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                  <input class="form-control" size="16" type="text" value="" readonly>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar fa fa-calendar"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input2" name='date' value="" /><br/>
+              </div>
+              <div class="form-group">
+                <label for="dtp_input3" class="col-md-2 control-label">Start Time</label>
+                <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                  <input class="form-control" size="16" type="text" value="" readonly>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
+                </div>
+              <input type="hidden" id="dtp_input3" name="start_time" value="" /><br/>
             </div>
+            <div class="form-group">
+                <label for="dtp_input3" class="col-md-2 control-label">Stop Time</label>
+                <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input4" data-link-format="hh:ii">
+                  <input class="form-control" size="16" type="text" value="" readonly>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
+                </div>
+              <input type="hidden" id="dtp_input4" name="stop_time" value="" /><br/>
+            </div>
+            <input class="btn btn-success" type="submit" value="Request Service">
+            </form>
           </div>
         </div> <!-- / .row -->
       </div> <!-- / .container -->
-
-      <!-- Main Services -->
-      <div class="main-services">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-gear"></i>
-                  <div class="service-desc">
-                    <h4>Built With Bootstrap 3</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-arrows-alt"></i>
-                  <div class="service-desc">
-                    <h4>Responsive Design</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-refresh"></i>
-                  <div class="service-desc">
-                    <h4>Easy to Customize</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-plus"></i>
-                  <div class="service-desc">
-                    <h4>20+ Templates Included</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-envelope"></i>
-                  <div class="service-desc">
-                    <h4>24/7 Support</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-            <div class="col-sm-4">
-              <div class="services">
-                <div class="service-item">
-                  <i class="fa fa-picture-o"></i>
-                  <div class="service-desc">
-                    <h4>Isotope Gallery</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
-                  </div>
-                </div>
-              </div> <!-- / .services -->
-            </div>
-          </div> <!-- / .row -->
-        </div> <!-- / .container -->
-      </div> <!-- / .main-features -->
-
-
 
     </div> <!-- / .wrapper -->
 {% endblock %}
 
 {% block footer %}
   <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+  <script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+    //language:  'fr',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    forceParse: 0,
+    showMeridian: 1
+    });
+  $('.form_date').datetimepicker({
+    language:  'fr',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+    });
+  $('.form_time').datetimepicker({
+    language:  'fr',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 1,
+    minView: 0,
+    maxView: 1,
+    forceParse: 0
+    });
+  </script>
 {% endblock %}

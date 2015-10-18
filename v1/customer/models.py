@@ -39,7 +39,7 @@ class AbstractCustomer(AbstractBaseUser):
 	is_admin = models.BooleanField(default=False)
 
 	def __str__(self):
-		return '%s %s' % (self.id, self.username)
+		return '%s %s - %s' % (self.id, self.username, self.first_name)
 
 	def get_full_name(self):
 		return '%s %s' % (self.first_name, self.last_name)

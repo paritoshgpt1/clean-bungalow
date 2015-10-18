@@ -32,7 +32,7 @@ def register(request):
 			ctx.update({'mobile_error':'Mobile No. should be of 10 digits'})
 		if not error:
 			password = make_password(password1)
-			Customer.objects.create(username=mobile, mobile=mobile, password=password)
+			Customer.objects.create(username=mobile, mobile=mobile, password=password, first_name=name)
 			return redirect('/login')
 		else:
 			return render_to_response('customer/sign-up.html', ctx, context_instance=context)
