@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
 
-    <title>Clean Bungalow - Coming Soon</title>
+    <title>Paperclip - Coming Soon</title>
 
     <!-- CSS Global -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
