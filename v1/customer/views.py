@@ -41,7 +41,7 @@ def register(request):
 
 def home(request):
 	context = RequestContext(request)
-	return render_to_response('customer/index-old-latest.html', {}, context_instance=context)
+	return render_to_response('customer/index.html', {}, context_instance=context)
 
 def loginUser(request):
 	if request.method == 'POST':
