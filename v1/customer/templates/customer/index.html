@@ -1,81 +1,350 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'customer/base.html' %}
 {% load static from staticfiles %}
-<!-- Mirrored from simpleqode.com/preview/paperclip/1.2.0/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2013], Sat, 03 Oct 2015 12:54:48 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
+{% block maincontent %}
+    <!-- Wrapper -->
+    <div class="wrapper">
 
-    <title>Clean Bungalow - Coming Soon</title>
+      <!-- Home Slider -->
+      <div class="home-slider">
+        <!-- Carousel -->
+        <div id="home-slider" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#home-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#home-slider" data-slide-to="1"></li>
+            <li data-target="#home-slider" data-slide-to="2"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <!-- Slide #1 -->
+            <div class="item active" id="item-1">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="home-slider__content">
+                      <h2 class="first-child animated slideInDown delay-2">House Yours. Responsibility Ours.</h2>
+                      <h3 class="animated slideInDown delay-3">Committed to serve you the best, cheapest and quality service.</h3>
+                      <ul class = "lead string">
+                      <li class="animated slideInLeft delay-4"><i class="fa fa-chevron-circle-right fa-fw"></i> 30 days assured service.</li>
+                      <li class="animated slideInLeft delay-4"><i class="fa fa-chevron-circle-right fa-fw"></i> Worker replacement on complaint.</li>
+                      <li class="animated slideInLeft delay-4"><i class="fa fa-chevron-circle-right fa-fw"></i> No hidden charges.</li>
+                      </ul>
+                      <a href="/login" class="btn btn-lg btn-theme-primary animated fadeInUpBig delay-5">Book Now</a>
+                    </div>
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .container -->
+              <div class="bg-img hidden-xs">
+                <img src="{% static 'img/item-1.png' %}" alt="...">
+              </div>
+            </div> <!-- / .item -->
+            <!-- Slide #2 -->
+            <div class="item" id="item-2">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="home-slider__content">
+                      <ul class="lead">
+                        <li class="animated slideInLeft delay-2"><span>No Holidays</span></li>
+                        <li class="animated slideInLeft delay-3"><span>Book as per your convenience</span></li>
+                        <li class="animated slideInLeft delay-4"><span>At your doorsteps within 3 hours</span></li>
+                        <li class="animated slideInLeft delay-5"><span>Immediate replacement</span></li>
+                      </ul>
+                      <ul class="lead string">
+                        <li class="animated fadeInUpBig delay-6"><span>Verified maids</span></li>
+                        <li class="animated fadeInUpBig delay-7"><span>We value customers first</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .container -->
+              <div class="bg-img hidden-xs">
+                <img src="{% static 'img/item-2.png' %}" alt="...">
+              </div>         
+            </div> <!-- / .item -->
+            <!-- Slide #3 -->
+            <div class="item" id="item-3">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="home-slider__content">
+                      <h1 class="first-child animated slideInDown delay-2">Why Us?</h1>
+                      <!--<h3 class="animated slideInDown delay-3">Look No Further</h3>-->
+                      <ul>
+                        <li class="animated slideInLeft delay-4"><i class="fa fa-chevron-circle-right fa-fw"></i> Dedicated</li>
+                        <li class="animated slideInLeft delay-5"><i class="fa fa-chevron-circle-right fa-fw"></i> Trustworthy</li>
+                        <li class="animated slideInLeft delay-6"><i class="fa fa-chevron-circle-right fa-fw"></i> Reliable</li>
+                        <li class="animated slideInLeft delay-7"><i class="fa fa-chevron-circle-right fa-fw"></i> 24*7 support</li>
+                      </ul>
+                      <a href="/login" class="btn btn-lg btn-theme-primary animated fadeInUpBig delay-8">Book Now</a>
+                    </div>
+                  </div>
+                </div> <!-- / .row -->
+              </div> <!-- / .container -->
+              <div class="bg-img hidden-xs">
+                <img src="{% static 'img/item-3.png' %}" alt="...">
+              </div>       
+            </div> <!-- / .item -->
+          </div> <!-- / .carousel -->
+          <!-- Controls -->
+          <a class="carousel-arrow carousel-arrow-prev" href="#home-slider" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+          </a>
+          <a class="carousel-arrow carousel-arrow-next" href="#home-slider" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+      </div> <!-- / .home-slider -->
 
-    <!-- CSS Global -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-    <!-- CSS Plugins -->
-    <link href="{% static 'fonts/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
-    {% block customcss %}
-    {% endblock  %}
-    <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css2b6b.css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css8b01.css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body class="coming-soon">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <!-- Main Content -->
-          <h1 class="text-center">Coming Soon...</h1>
-          <p class="lead text-center">
-            We are currently working on it.<br />
-            Keep checking this place for updates.
-          </p>
-          <!-- <form class="form-inline text-center" role="form">
-            <div class="form-group">
-                <label class="sr-only" for="email">Email address</label>
-              <input type="email" class="form-control border-color col-sm-12" id="email" placeholder="Email">
+      <!-- Services -->
+      <div class="home-services">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-7">
+              <ul>
+                <li>
+                  <i class="fa fa-gears"></i>
+                  <p><span>Choose Best</span> Services</p>
+                </li>
+                <li>
+                  <i class="fa fa-flag"></i>
+                  <p>Rate <span>Card</span></p>
+                </li>
+                <!--<li>
+                  <i class="fa fa-picture-o"></i>
+                  <p>Isotope <span>Portfolio</span></p>
+                </li>-->
+                <li>
+                  <i class="fa fa-envelope-o"></i>
+                  <p>24/7 Support <span>by e-mail</span></p>
+                </li>
+              </ul>
             </div>
-            <button type="submit" class="btn btn-theme-primary">Subscribe</button>
-          </form> -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <!-- <div id="countdown"></div> -->
-        </div>
-      </div>  <!-- / .row -->
-    </div> <!-- / .container -->    
+            <div class="col-md-5 hidden-sm hidden-xs">
+              <p class="lead">House Yours. Responsibility Ours.</p>
+            </div>
+          </div> <!-- / .row
+        </div> <!-- / .container
+      </div> <!-- / .services -->
 
-    <!-- JavaScript
-    ================================================== -->
-    
-    <!-- JS Global -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    
-    <!-- JS Plugins -->
-    <script src="{% static 'js/scrolltopcontrol.js' %}"></script>
-    <script src="{% static 'js/jquery.plugin.min.js' %}"></script>
-    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
-    
-    <!-- JS Custom -->
-    <script src="{% static 'js/custom.js' %}"></script>
-    <script src="{% static 'js/coming-soon.js' %}"></script>
+      <!--<Browser Showcase>
+      <!--<div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="headline-lg">Paperclip: Multi-purpose Professional Theme</h2>
+            <h4 class="text-theme-secondary">Perfect for corporate websites and mobile apps.</h4>
+            <div class="browser-showcase">
+              <img src="{% static 'img/browsers.png' %}" class="img-responsive" alt="...">
+            </div>
+          </div>
+        </div>  / .row
+      </div>  / container -->
+      <!--
+      <!-- Main Services
+      <div class="main-services">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-gear"></i>
+                  <div class="service-desc">
+                    <h4>Book Now</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services
+            </div>
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-arrows-alt"></i>
+                  <div class="service-desc">
+                    <h4>Responsive Design</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services
+            </div>
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-refresh"></i>
+                  <div class="service-desc">
+                    <h4>Easy to Customize</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services -
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-plus"></i>
+                  <div class="service-desc">
+                    <h4>20+ Templates Included</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services --
+            </div>
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-envelope"></i>
+                  <div class="service-desc">
+                    <h4>24/7 Support</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services --
+            </div>
+            <div class="col-sm-4">
+              <div class="services">
+                <div class="service-item">
+                  <i class="fa fa-picture-o"></i>
+                  <div class="service-desc">
+                    <h4>Isotope Gallery</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum varius, tincidunt odio nec, placerat enim.</p>
+                  </div>
+                </div>
+              </div> <!-- / .services -->
+            </div>
+          </div> <!-- / .row -->
+        </div> <!-- / .container -->
+      </div> <!-- / .main-features -->
 
+      <!-- Responsive Showcase --
+      <div class="responsive-showcase">
+        <div class="container">
+          <div class="responsive-design">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2 class="headline-lg headline-lg_left first-child">Fully Responsive Design</h2>
+                <p class="lead text-muted">
+                  Pellentesque magna turpis, porttitor non leo ac, imperdiet sollicitudin neque. Sed id condimentum quam. Ut dui velit, suscipit et libero vulputate, feugiat vestibulum velit. Integer auctor, orci sit amet tincidunt posuere.
+                </p>
+                <ul class="list-inline hidden-xs">
+                  <li><i class="fa fa-mobile text-theme-secondary inactive" data-device="#iphone"></i></li>
+                  <li><i class="fa fa-tablet text-theme-secondary inactive" data-device="#ipad"></i></li>
+                  <li><i class="fa fa-laptop text-theme-secondary" data-device="#macbook"></i></li>
+                  <li><i class="fa fa-desktop text-theme-secondary inactive" data-device="#imac"></i></li>
+                </ul>
+              </div>
+              <div class="col-sm-6 hidden-xs">
+                <img class="img-responsive show" src="{% static 'img/macbook.png' %}" alt="..." id="macbook">
+                <img class="img-responsive hidden" src="{% static 'img/imac.png' %}" alt="..." id="imac">
+                <img class="img-responsive hidden" src="{% static 'img/ipad.png' %}" alt="..." id="ipad">
+                <img class="img-responsive hidden" src="{% static 'img/iphone.png' %}" alt="..." id="iphone">
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .template-thumbnails -->
+        </div> <!-- / .container -->
+      </div> <!-- / .template-showcase -->
 
-  </body>
+      <!-- Feedback -->
+      <!--<div class="feedbacks">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h2 class="headline-lg">What Clients Say About Us</h2>
+            </div>
+          </div> <!-- / .row
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="feedback">
+                <i class="fa fa-user fa-2x"></i>
+                <div>
+                  <p>
+                    In vitae sodales massa. Proin commodo nibh sed nisi placerat facilisis. Fusce fringilla elit ipsum, vitae viverra ligula hendrerit nec.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="feedback">
+                <i class="fa fa-user fa-2x"></i>
+                <div>
+                  <p>
+                    In vitae sodales massa. Proin commodo nibh sed nisi placerat facilisis. Fusce fringilla elit ipsum, vitae viverra ligula hendrerit nec.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-sm col-md-4">
+              <div class="feedback">
+                <i class="fa fa-user fa-2x"></i>
+                <div>
+                  <p>
+                    In vitae sodales massa. Proin commodo nibh sed nisi placerat facilisis. Fusce fringilla elit ipsum, vitae viverra ligula hendrerit nec.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="feedback">
+                <i class="fa fa-user fa-2x"></i>
+                <div>
+                  <p>
+                    Donec dignissim ipsum nec sagittis suscipit. Nullam nibh turpis, faucibus ultrices ullamcorper et, ornare sit amet quam. Etiam adipiscing justo massa, vel elementum felis aliquet quis. Nulla facilisis magna nulla, nec imperdiet felis lacinia et.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="feedback">
+                <i class="fa fa-user fa-2x"></i>
+                <div>
+                  <p>
+                    Donec dignissim ipsum nec sagittis suscipit. Nullam nibh turpis, faucibus ultrices ullamcorper et, ornare sit amet quam. Etiam adipiscing justo massa, vel elementum felis aliquet quis. Nulla facilisis magna nulla, nec imperdiet felis lacinia et.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- / .row
+        </div> <!-- / .container
+      </div>  / .feedback -->
 
-<!-- Mirrored from simpleqode.com/preview/paperclip/1.2.0/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2013], Sat, 03 Oct 2015 12:54:48 GMT -->
-</html>
+      <!-- Recent Blog Posts -->
+      <!--<div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2 class="headline-lg">Recent Blog Posts</h2>
+          </div>
+        </div> <!-- / .row
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="blog">
+              <img src="{% static 'img/photo-1.jpg' %}" alt="...">
+              <div class="blog-desc">
+                <h3>
+                  <a href="blog-post.html">Sed lacinia suscipit lacus non sodales. Pellentesque lacinia ornare justo eu tincidunt.</a>
+                </h3>
+                <hr>
+                <p class="text-muted">by John Doe</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi lorem, elementum sed feugiat ac, pharetra lacinia mi. Integer iaculis risus sed quam vehicula, sit amet lacinia sem rutrum. Integer ligula orci.</p>
+                <a class="btn btn-lg btn-theme-primary" href="blog-post.html">Read More...</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="blog second-child">
+              <img src="{% static 'img/photo-2.jpg' %}" alt="...">
+              <div class="blog-desc">
+                <h3>
+                  <a href="blog-post.html">Nulla pretium libero interdum, tempus lorem non, rutrum diam. Lorem ipsum dolor sit amet.</a>
+                </h3>
+                <hr>
+                <p class="text-muted">by John Doe</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi lorem, elementum sed feugiat ac, pharetra lacinia mi. Integer iaculis risus sed quam vehicula, sit amet lacinia sem rutrum. Integer ligula orci.</p>
+                <a class="btn btn-lg btn-theme-primary" href="blog-post.html">Read More...</a>
+              </div>
+            </div>
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+
+    </div> <!-- / .wrapper -->
+{% endblock %}
