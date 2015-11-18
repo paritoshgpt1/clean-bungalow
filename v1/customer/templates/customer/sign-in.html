@@ -45,6 +45,9 @@
 {#                      <input type="checkbox"> Remember me#}
 {#                    </label>#}
                   </div>
+	                {% if signin_error %}
+                      <div class="alert alert-danger">{{ signin_error }}</div>
+                    {%endif %}
                   <button type="submit" class="btn btn-theme-primary">Submit</button>
                   <hr>
                 </form>

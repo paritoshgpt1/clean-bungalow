@@ -52,6 +52,10 @@ def loginUser(request):
 			if user.is_active:
 				login(request, user)
 				return redirect(reverse('order:book_service'))
+		else:
+			signin_error = 'Incorrect Username/Password'
+			context = RequestContext(request)
+			return render_to_response('customer/sign-in.html', {'signin_error': signin_error}, context_instance=context)
 	else:
 		context = RequestContext(request)
 		return render_to_response('customer/sign-in.html', {}, context_instance=context)
