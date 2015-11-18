@@ -20,7 +20,7 @@ from customer import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', views.loginUser, name='check_login'),
-    # url(r'^logout/$', views.logout, name='logout'),
+    url(r'^logout/$', views.logoutUser, name='logoutUser'),
     url(r'^register/$', views.register, name='register'),
     url(r'^order/', include('order.urls', namespace='order')),
     url(r'^service/', include('service.urls', namespace='service')),

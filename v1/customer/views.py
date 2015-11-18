@@ -57,6 +57,12 @@ def loginUser(request):
 			context = RequestContext(request)
 			return render_to_response('customer/sign-in.html', {'signin_error': signin_error}, context_instance=context)
 	else:
-		context = RequestContext(request)
-		return render_to_response('customer/sign-in.html', {}, context_instance=context)
+		if request.user.is_authenticated():
+			return redirect('/order/book-service')
+		else:
+			context = RequestContext(request)
+			return render_to_response('customer/sign-in.html', {}, context_instance=context)
 
+def logoutUser(request):
+	logout(request)
+	return redirect('/login')
