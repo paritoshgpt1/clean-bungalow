@@ -30,6 +30,10 @@ def register(request):
 		if len(mobile) != 10:
 			error = True
 			ctx.update({'mobile_error':'Mobile No. should be of 10 digits'})
+		customer_exists = Customer.objects.filter(username=mobile)
+		if customer_exists:
+			error = True
+			ctx.update({'mobile_error':'Account with this mobile number already exists !'})
 		if not error:
 			password = make_password(password1)
 			Customer.objects.create(username=mobile, mobile=mobile, password=password, first_name=name)
