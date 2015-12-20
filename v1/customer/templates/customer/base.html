@@ -20,11 +20,8 @@
 	{% block customcss %}
 	{% endblock %}
 	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css2b6b.css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'
-	      type='text/css'>
-	<link href='https://fonts.googleapis.com/css8b01.css?family=Ubuntu:300,400,500,700' rel='stylesheet'
-	      type='text/css'>
-
+	<!--<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css2b6b.css?family=Source+Sans+Pro:300,400,600,700'>-->
+	<!--<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css8b01.css?family=Ubuntu:300,400,500,700'>-->
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -143,11 +140,16 @@
 					<li><a href="shop-item.html">Shop Item</a></li>
 					<li><a href="shopping-cart.html">Shopping Cart</a></li>
 					<li><a href="user-profile.html">User Profile</a></li>
-				  </ul>-->
-				</li>
+				  </ul>
+				</li>-->
 				<li class="hidden-sm">
 					<a href="#contact_us">Contact Us</a>
 				</li>
+				{% if request.user.first_name %}
+				<li class="hidden-sm">
+					<a>Welcome {{ request.user.first_name }}</a>
+				</li>
+				{% endif %}
 				<!-- Navbar Search -->
 				<!--<li class="hidden-xs hidden-sm" id="navbar-search">
 				  <a href="#">

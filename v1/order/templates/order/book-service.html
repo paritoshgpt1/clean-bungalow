@@ -1,97 +1,142 @@
 {% extends 'customer/base.html' %}
 {% load static from staticfiles %}
 {% block customcss %}
-  <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
 {% endblock  %}
 {% block maincontent %}
-    <!-- Wrapper -->
-    <div class="wrapper">
+<!-- Wrapper -->
+<div class="wrapper">
 
-      <!-- Browser Showcase -->
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <form action="/order/book-service" method="POST">
-              {% csrf_token %}
-              <div class="form-group">
-                  <label for="dtp_input3" class="col-md-2 control-label">Select Service</label>
-                  <div class="input-group col-md-5">
-                    <select class="form-control" name="service">
-                      {% for each in services %}
-                        <option value="{{ each.0 }}">{{each.1}}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-              </div>
-              <div class="form-group">
-                <label for="dtp_input2" class="col-md-2 control-label">Select Date</label>
-                <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                  <input class="form-control" size="16" type="text" value="" readonly>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar fa fa-calendar"></span></span>
-                </div>
-                <input type="hidden" id="dtp_input2" name='date' value="" /><br/>
-              </div>
-              <div class="form-group">
-                <label for="dtp_input3" class="col-md-2 control-label">Start Time</label>
-                <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-                  <input class="form-control" size="16" type="text" value="" readonly>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
-                </div>
-              <input type="hidden" id="dtp_input3" name="start_time" value="" /><br/>
-            </div>
-            <div class="form-group">
-                <label for="dtp_input3" class="col-md-2 control-label">Stop Time</label>
-                <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input4" data-link-format="hh:ii">
-                  <input class="form-control" size="16" type="text" value="" readonly>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove fa fa-remove"></span></span>
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
-                </div>
-              <input type="hidden" id="dtp_input4" name="stop_time" value="" /><br/>
-            </div>
-            <input class="btn btn-success" type="submit" value="Request Service">
-            </form>
-          </div>
-        </div> <!-- / .row -->
-      </div> <!-- / .container -->
+	<!-- Browser Showcase -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<form action="/order/book-service" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="dtp_input3" class="col-md-2 control-label">Select Service</label>
 
-    </div> <!-- / .wrapper -->
+						<div class="input-group col-md-5">
+							<select class="form-control" name="service">
+								{% for each in services %}
+								<option value="{{ each.0 }}">{{each.1}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dtp_input2" class="col-md-2 control-label">Select Date</label>
+
+						<div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy"
+						     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+							<input class="form-control" size="16" type="text" value="" readonly>
+							<span class="input-group-addon"><span
+									class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+							<span class="input-group-addon"><span
+									class="glyphicon glyphicon-calendar fa fa-calendar"></span></span>
+						</div>
+						{% if date_error %}
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3"><i class="fa fa-dot-circle-o"></i> {{ date_error }}</div>
+							</div>
+						{% endif %}
+						<input type="hidden" id="dtp_input2" name='date' value=""/><br/>
+					</div>
+					<div class="form-group">
+						<label for="dtp_input3" class="col-md-2 control-label">Start Time</label>
+
+						<div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii"
+						     data-link-field="dtp_input3" data-link-format="hh:ii" data-name="start_time">
+							<input class="form-control" size="16" type="text" value="" readonly>
+							<span class="input-group-addon"><span
+									class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
+						</div>
+						{% if start_time_error %}
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3"><i class="fa fa-dot-circle-o"></i> {{ start_time_error }}</div>
+							</div>
+						{% endif %}
+						<input type="hidden" id="dtp_input3" name="start_time" value=""/><br/>
+					</div>
+					<div class="form-group">
+						<label for="dtp_input3" class="col-md-2 control-label">Stop Time</label>
+
+						<div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii"
+						     data-link-field="dtp_input4" data-link-format="hh:ii" data-name="end_time">
+							<input class="form-control" size="16" type="text" value="" readonly>
+							<span class="input-group-addon"><span
+									class="glyphicon glyphicon-remove fa fa-remove"></span></span>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-time fa fa-clock-o"></span></span>
+						</div>
+						{% if end_time_error %}
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3"><i class="fa fa-dot-circle-o"></i> {{ end_time_error }}</div>
+							</div>
+						{% endif %}
+						<input type="hidden" id="dtp_input4" name="stop_time" value=""/><br/>
+					</div>
+					<input class="btn btn-success" type="submit" value="Request Service">
+				</form>
+			</div>
+		</div>
+		<!-- / .row -->
+	</div>
+	<!-- / .container -->
+
+</div> <!-- / .wrapper -->
 {% endblock %}
 
 {% block footer %}
-  <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
-  <script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-    //language:  'fr',
-    weekStart: 1,
-    todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 2,
-    forceParse: 0,
-    showMeridian: 1
-    });
-  $('.form_date').datetimepicker({
-    language:  'fr',
-    weekStart: 1,
-    todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 2,
-    minView: 2,
-    forceParse: 0
-    });
-  $('.form_time').datetimepicker({
-    language:  'fr',
-    weekStart: 1,
-    todayBtn:  1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 1,
-    minView: 0,
-    maxView: 1,
-    forceParse: 0
-    });
-  </script>
+<script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+<script type="text/javascript">
+	$('.form_date').datetimepicker({
+		language: 'fr',
+		weekStart: 1,
+		todayBtn: 1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		startDate: new Date()
+	}).on('changeDate', function(ev){
+		console.log(ev.date.getDate(), ev.date.getMonth()+1, ev.date.getFullYear());
+		var start_date = String(ev.date.getFullYear())+'-'+String(ev.date.getMonth()+1)+'-'+String(ev.date.getDate());
+		var end_date = String(ev.date.getFullYear())+'-'+String(ev.date.getMonth()+1)+'-'+String(ev.date.getDate()+1);
+		console.log(start_date, end_date);
+		$('.form_time').datetimepicker('setStartDate', start_date);
+		$('.form_time').datetimepicker('setEndDate', end_date);
+
+	});
+	$('div[data-name="start_time"]').datetimepicker({
+		language: 'fr',
+		weekStart: 1,
+		todayBtn: 0,
+		autoclose: 1,
+		todayHighlight: 0,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+	}).on('changeDate', function(ev){
+		var selected = new Date($('div[data-name="start_time"]').datetimepicker('getDate'));
+		console.log(selected);
+		$('div[data-name="end_time"]').datetimepicker('setStartDate', selected);
+	});
+	$('div[data-name="end_time"]').datetimepicker({
+		language: 'fr',
+		weekStart: 1,
+		todayBtn: 0,
+		autoclose: 1,
+		todayHighlight: 0,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+	}).on('changeDate', function(ev){
+		console.log("!@#@#!@");
+		console.log(ev.date.getDate(), ev.date.getMonth()+1, ev.date.getFullYear());
+	});
+</script>
 {% endblock %}

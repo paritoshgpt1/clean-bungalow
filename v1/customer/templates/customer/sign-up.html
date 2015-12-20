@@ -32,7 +32,7 @@
                 {% csrf_token %}
                     <div class="form-group">
                     <label for="name" class="sr-only">Enter Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your full name here." data-original-title="Name">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ request.POST.name }}" placeholder="Your name" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your full name here." data-original-title="Name">
                   </div>
                   {% if mobile_error %}
                   <div class="form-group has-error">
@@ -40,7 +40,7 @@
                   <div class="form-group">
                   {% endif %}
                     <label for="mobile" class="sr-only">Enter Mobile No.</label>
-                    <input type="number" class="form-control" name="mobile" id="mobile" placeholder="Mobile No." data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your mobile no. here." data-original-title="Mobile No.">
+                    <input type="number" class="form-control" name="mobile" value="{{ request.POST.mobile }}" id="mobile" placeholder="Mobile No." data-toggle="popover" data-placement="left" data-trigger="focus" data-content="Enter your mobile no. here." data-original-title="Mobile No.">
                   {% if mobile_error %}
                       <div class="alert alert-danger">{{ mobile_error }}</div>
                     {%endif %}

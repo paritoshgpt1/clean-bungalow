@@ -1,0 +1,27 @@
+{% extends 'customer/base.html' %}
+{% load static from staticfiles %}
+{% block customcss %}
+<link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+{% endblock  %}
+{% block maincontent %}
+<!-- Wrapper -->
+<div class="wrapper">
+
+	<!-- Browser Showcase -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-sm-12">
+				<h3>Thank you for your order</h3>
+				<h3>We will get in touch with you shortly.</h3>
+				<a class="btn btn-success" href="/order/book-service">Book Another Service</a>
+			</div>
+		</div>
+		<!-- / .row -->
+	</div>
+	<!-- / .container -->
+
+</div> <!-- / .wrapper -->
+{% endblock %}
+{##}
+{#{% block footer %}#}
+{#{% endblock %}#}
